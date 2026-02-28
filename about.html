@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About #rexxie sec-ops — Product engineering and cybersecurity firm building resilient digital systems.">
+    <title>About #rexxie sec-ops</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-600: #0284c7;
+            --primary-700: #0369a1;
+            --primary-50: #f0f9ff;
+            --accent-600: #db2777;
+            --neutral-50: #f9fafb;
+            --neutral-100: #f3f4f6;
+            --neutral-200: #e5e7eb;
+            --neutral-600: #4b5563;
+            --neutral-700: #374151;
+            --neutral-900: #111827;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            color: var(--neutral-900);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 6rem 0;
+            }
+        }
+
+        .heading-lg {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .heading-md {
+            font-size: 1.875rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .heading-sm {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .subheading {
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--neutral-700);
+            margin-bottom: 1.5rem;
+        }
+
+        .body-lg {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: var(--neutral-600);
+            margin-bottom: 1rem;
+        }
+
+        .body-md {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--neutral-600);
+            margin-bottom: 1rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, var(--primary-600), var(--accent-600));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero {
+            background: linear-gradient(to bottom, var(--neutral-50), white);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-600);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-700);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: var(--neutral-100);
+            color: var(--neutral-900);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--neutral-200);
+        }
+
+        .btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1), 0 0 0 5px rgba(2, 132, 199, 0.5);
+        }
+
+        ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        ul li {
+            padding: 0.5rem 0 0.5rem 2rem;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-600);
+            font-weight: bold;
+        }
+
+        .card {
+            border-radius: 0.75rem;
+            border: 1px solid var(--neutral-200);
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card:hover {
+            border-color: var(--primary-300);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        footer {
+            background-color: var(--neutral-900);
+            color: var(--neutral-400);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.875rem;
+        }
+
+        footer .brand {
+            color: white;
+            font-weight: 600;
+        }
+
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--neutral-200);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--neutral-600);
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 1rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-600);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-brand {
+            color: var(--neutral-900);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        @media (max-width: 640px) {
+            .heading-lg {
+                font-size: 1.875rem;
+            }
+
+            .heading-md {
+                font-size: 1.5rem;
+            }
+
+            nav a {
+                margin: 0 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">#rexxie sec-ops</a>
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="heading-lg">
+                    Security-First Engineering for Products That
+                    <span class="gradient-text">Matter</span>
+                </h1>
+                <p class="subheading">
+                    #rexxie sec-ops is a product engineering and cybersecurity firm building resilient digital systems for founders and organizations that refuse fragile infrastructure.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="section">
+        <div class="container">
+            <h2 class="heading-md">Our Mission</h2>
+            <div class="card">
+                <p class="body-lg">
+                    To engineer digital platforms that are secure by design, scalable by architecture, and reliable in the real world.
+                </p>
+                <p class="body-md">
+                    We exist because too many products fail not from lack of ideas—but from weak foundations. We build the foundations right.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Are -->
+    <section class="section">
+        <div class="container">
+            <h2 class="heading-md">Who We Are</h2>
+            <p class="body-lg">
+                #rexxie sec-ops operates at the intersection of product engineering, infrastructure, and cybersecurity.
+            </p>
+            <p class="body-md">
+                We don't just "build websites." We design and deploy production-grade systems—the kind that can withstand growth, traffic, and real-world threat models.
+            </p>
+            <div class="card">
+                <h3 class="heading-sm">Our team blends:</h3>
+                <ul>
+                    <li>Modern full-stack engineering</li>
+                    <li>Infrastructure and DevOps discipline</li>
+                    <li>Security-first architecture (Project Cyber-Sec)</li>
+                    <li>Automation and AI to unlock operational leverage</li>
+                </ul>
+                <p class="body-md" style="margin-top: 1.5rem;">
+                    <strong>The result:</strong> platforms that are fast to launch, safe to operate, and built to scale.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Think -->
+    <section class="section">
+        <div class="container">
+            <h2 class="heading-md">How We Think</h2>
+            <p class="body-lg">
+                Architecture before speed. Security before convenience. Discipline before shortcuts.
+            </p>
+            <p class="body-md">
+                Every system we ship is reviewed through three lenses:
+            </p>
+            <div class="card">
+                <ul>
+                    <li><strong>Scalability:</strong> Will this survive growth?</li>
+                    <li><strong>Security:</strong> Is this safe by default?</li>
+                    <li><strong>Maintainability:</strong> Can this be evolved without pain?</li>
+                </ul>
+                <p class="body-md" style="margin-top: 1.5rem;">
+                    If the answer isn't yes across all three, we don't ship it.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work -->
+    <section class="section">
+        <div class="container">
+            <h2 class="heading-md">How We Work</h2>
+            <p class="body-md">
+                A structured delivery model built for long-term success:
+            </p>
+            <div class="card">
+                <ol style="list-style: decimal; margin-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;"><strong>Discovery & Architecture</strong> – We clarify goals, risks, and technical strategy.</li>
+                    <li style="margin-bottom: 1rem;"><strong>Engineering & Implementation</strong> – Clean, production-grade builds.</li>
+                    <li style="margin-bottom: 1rem;"><strong>Security Hardening</strong> – Audits, threat modeling, and protection by design.</li>
+                    <li><strong>Launch & Support</strong> – Ongoing optimization and reliability.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Work With -->
+    <section class="section">
+        <div class="container">
+            <h2 class="heading-md">Who We Work With</h2>
+            <div class="card">
+                <h3 class="heading-sm">We partner with:</h3>
+                <ul>
+                    <li>Founders building serious digital products</li>
+                    <li>Growing businesses that need reliable systems</li>
+                    <li>Organizations handling sensitive data</li>
+                    <li>Teams that value security, performance, and long-term technical ownership</li>
+                </ul>
+                <p class="body-md" style="margin-top: 1.5rem; color: #db2777;">
+                    <strong>Not a fit:</strong> One-off, ultra-low-budget website requests with no concern for quality or security.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="text-align: center;">
+        <div class="container">
+            <h2 class="heading-md">If you're building something that has to last, you're in the right place.</h2>
+            <a href="index.html#contact" class="btn btn-primary" style="margin-top: 1.5rem;">
+                Book a Strategy Call
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 1rem; height: 1rem; margin-left: 0.5rem;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="brand">#rexxie sec-ops</p>
+            <p style="font-size: 0.875rem; margin-top: 0.5rem;">© 2026 #rexxie sec-ops. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

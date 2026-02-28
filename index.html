@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="REXXIE - Security-First Development Agency. Building secure, scalable applications with expert-level execution.">
+    <title>REXXIE - Security-First Development Agency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-50: #f0f9ff;
+            --primary-600: #0284c7;
+            --primary-700: #0369a1;
+            --primary-100: #e0f2fe;
+            --accent-500: #ec4899;
+            --accent-600: #db2777;
+            --neutral-50: #f9fafb;
+            --neutral-100: #f3f4f6;
+            --neutral-200: #e5e7eb;
+            --neutral-500: #6b7280;
+            --neutral-600: #4b5563;
+            --neutral-700: #374151;
+            --neutral-900: #111827;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            color: var(--neutral-900);
+            line-height: 1.6;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--neutral-100);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neutral-400);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neutral-500);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Typography */
+        .heading-lg {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .heading-md {
+            font-size: 1.875rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .heading-sm {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .subheading {
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--neutral-700);
+        }
+
+        .body-lg {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: var(--neutral-600);
+        }
+
+        .body-md {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--neutral-600);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1), 0 0 0 5px rgba(2, 132, 199, 0.5);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-600);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-700);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+            background-color: var(--primary-700);
+        }
+
+        .btn-secondary {
+            background-color: var(--neutral-100);
+            color: var(--neutral-900);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--neutral-200);
+        }
+
+        /* Cards */
+        .card {
+            border-radius: 0.75rem;
+            border: 1px solid var(--neutral-200);
+            background-color: white;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-out;
+        }
+
+        .card:hover {
+            border-color: var(--primary-300);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Container */
+        .container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
+
+        /* Section spacing */
+        .section {
+            padding: 4rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 6rem 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .section {
+                padding: 8rem 0;
+            }
+        }
+
+        /* Gradient */
+        .gradient-primary {
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-800) 100%);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom, var(--neutral-50), white);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 56rem;
+            margin: 0 auto;
+            animation: slideInDown 0.6s ease-out;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 1.5rem;
+            color: var(--neutral-900);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, var(--primary-600), var(--accent-600));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            margin-bottom: 2rem;
+            color: var(--neutral-600);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 640px) {
+            .btn-group {
+                flex-direction: row;
+                gap: 1rem;
+            }
+        }
+
+        .btn svg {
+            width: 1rem;
+            height: 1rem;
+            margin-left: 0.5rem;
+        }
+
+        /* Trust Signals */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 4rem;
+            animation: slideInUp 0.6s ease-out 0.2s both;
+        }
+
+        @media (min-width: 768px) {
+            .trust-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .trust-card {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--neutral-200);
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .trust-card svg {
+            width: 2rem;
+            height: 2rem;
+            color: var(--primary-600);
+            margin: 0 auto 0.5rem;
+        }
+
+        .trust-card p {
+            font-weight: 600;
+            color: var(--neutral-900);
+            font-size: 0.95rem;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: white;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .services-header h2 {
+            margin-bottom: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .service-card {
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--neutral-200);
+            background: white;
+            transition: all 0.3s ease-out;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .service-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-300);
+            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .service-card h3 {
+            margin-bottom: 0.75rem;
+            color: var(--neutral-900);
+        }
+
+        .service-card p {
+            color: var(--neutral-600);
+            line-height: 1.75;
+        }
+
+        /* Make service CTAs full-width on small screens */
+        .service-cta{display:inline-block}
+        @media (max-width: 640px){
+            .service-cta{display:block;width:100%;text-align:center}
+            .services-grid{grid-template-columns:1fr}
+            .service-card{padding:1rem}
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .cta {
+                padding: 6rem 0;
+            }
+        }
+
+        .cta h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .cta .btn {
+            background-color: white;
+            color: var(--primary-600);
+        }
+
+        .cta .btn:hover {
+            background-color: var(--primary-50);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--neutral-900);
+            color: var(--neutral-400);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.875rem;
+        }
+
+        footer .brand {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .heading-lg {
+                font-size: 1.875rem;
+            }
+
+            .heading-md {
+                font-size: 1.5rem;
+            }
+
+            .subheading {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 2rem 0;
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Icons */
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--neutral-200);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--neutral-600);
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 1rem;
+            transition: color 0.2s ease-out;
+        }
+
+        nav a:hover {
+            color: var(--primary-600);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-brand {
+            color: var(--neutral-900);
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-right: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            nav a {
+                margin: 0 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">#rexxie sec-ops</a>
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="heading-lg">
+                    From Idea to Production‑Grade
+                    <span class="gradient-text">Products Fast</span>
+                </h1>
+
+                <p class="subheading">
+                    We build secure, scalable systems for founders and teams who move fast.
+                    Launch your MVP, harden it, and scale with confidence.
+                </p>
+
+                <div class="btn-group">
+                    <a class="btn btn-primary" href="#contact">Book a Free Strategy Call
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </a>
+                    <a class="btn btn-secondary" href="/cyber-sec.html">Project Cyber‑Sec</a>
+                </div>
+
+                <!-- Trust Signals -->
+                <div class="trust-grid">
+                    <div class="trust-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m7 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p>SOC 2 Ready</p>
+                    </div>
+                    <div class="trust-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        <p>Security-First Architecture</p>
+                    </div>
+                    <div class="trust-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <p>Operational SLAs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audience Segmentation -->
+    <section class="section">
+        <div class="container">
+            <div class="services-header">
+                <h2 class="heading-md">Who We Help</h2>
+                <p class="subheading">Focused on high-leverage clients: founders, growing teams, security-sensitive platforms, and agencies.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3 class="heading-sm">Startup Founders</h3>
+                    <p class="body-md">MVP builders, SaaS founders, and non-technical founders who need to launch fast and iterate safely.</p>
+                    <p class="body-md" style="margin-top:0.75rem;">Convert: <strong>MVP development</strong>, product architecture, long-term partnership.</p>
+                    <a class="btn btn-primary service-cta" href="#contact" style="margin-top:1rem;">Book Strategy Call</a>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="heading-sm">SMEs & Growing Businesses</h3>
+                    <p class="body-md">Operational websites, portals, payment integrations, and admin systems that actually run your business.</p>
+                    <a class="btn btn-primary service-cta" href="#contact" style="margin-top:1rem;">Request a Quote</a>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="heading-sm">Security‑Sensitive Platforms</h3>
+                    <p class="body-md">Fintech-like products, voting platforms, and systems handling sensitive user data.</p>
+                    <p class="body-md">Convert: <strong>Security audit, hardening, continuous monitoring</strong>.</p>
+                    <a class="btn btn-secondary service-cta" href="#security" style="margin-top:1rem;">Explore Cyber‑Sec</a>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="heading-sm">Agencies & Non‑Technical Teams</h3>
+                    <p class="body-md">White-label dev, technical partnerships, and reliable engineering capacity for agency clients.</p>
+                    <a class="btn btn-primary service-cta" href="#contact" style="margin-top:1rem;">Partner With Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services section">
+        <div class="container">
+            <div class="services-header">
+                <h2 class="heading-md">Our Services</h2>
+                <p class="subheading">Full-stack solutions crafted for scale and security</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3 class="heading-sm">Product Engineering</h3>
+                    <p>End-to-end product delivery: design, development, testing, and launch.</p>
+                </div>
+                <div class="service-card">
+                    <h3 class="heading-sm">Cloud & DevOps</h3>
+                    <p>Scalable cloud architectures with CI/CD, IaC, and automated observability.</p>
+                </div>
+                <div class="service-card">
+                    <h3 class="heading-sm">Security Consulting</h3>
+                    <p>Project Cyber‑Sec: audits, threat modeling, hardening, and compliance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Cyber‑Sec (in-page) -->
+    <section id="security" class="section">
+        <div class="container">
+            <div class="services-header">
+                <h2 class="heading-md">Project Cyber‑Sec (Security‑Sensitive Platforms)</h2>
+                <p class="subheading">A focused security program for fintech, healthcare, voting platforms, and any system that handles sensitive user data.</p>
+            </div>
+
+            <div class="card">
+                <h3 class="heading-sm">What we deliver</h3>
+                <ul>
+                    <li>Threat modeling & architecture review</li>
+                    <li>Automated + manual penetration testing</li>
+                    <li>CI/CD secrets & secure deployment review</li>
+                    <li>Incident readiness + runbook</li>
+                    <li>Remediation PRs and verification</li>
+                </ul>
+                <a class="btn btn-primary service-cta" href="#contact" style="margin-top:1rem;">Request Security Audit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Project Brief -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div style="max-width:56rem; margin:0 auto; text-align:center; margin-bottom:2rem;">
+                <h2 class="heading-md">Start Your Project</h2>
+                <p class="subheading">Book a no-pressure strategy call or send us a project brief — we’ll respond within one business day.</p>
+            </div>
+
+            <form id="project-form" class="card" action="https://formspree.io/f/your-form-id" method="POST" novalidate>
+                <!-- Replace the action URL with your Formspree endpoint or server endpoint -->
+                <div style="display:grid; gap:1rem; grid-template-columns:1fr;">
+                    <label>
+                        <span class="body-md">Full name</span>
+                        <input type="text" name="name" required style="width:100%; padding:0.75rem; margin-top:0.5rem; border:1px solid var(--neutral-200); border-radius:8px;" />
+                    </label>
+                    <label>
+                        <span class="body-md">Company</span>
+                        <input type="text" name="company" style="width:100%; padding:0.75rem; margin-top:0.5rem; border:1px solid var(--neutral-200); border-radius:8px;" />
+                    </label>
+                    <label>
+                        <span class="body-md">Email</span>
+                        <input type="email" name="email" required style="width:100%; padding:0.75rem; margin-top:0.5rem; border:1px solid var(--neutral-200); border-radius:8px;" />
+                    </label>
+                    <label>
+                        <span class="body-md">Project summary</span>
+                        <textarea name="project" rows="5" placeholder="Describe what you want built" style="width:100%; padding:0.75rem; margin-top:0.5rem; border:1px solid var(--neutral-200); border-radius:8px;"></textarea>
+                    </label>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                        <label>
+                            <span class="body-md">Budget range</span>
+                            <select name="budget" style="width:100%; padding:0.75rem; margin-top:0.5rem; border:1px solid var(--neutral-200); border-radius:8px;">
+                                <option value="<5k">Under $5k</option>
+                                <option value="5k-20k">$5k–$20k</option>
+                                <option value="20k-100k">$20k–$100k</option>
+                                <option value=">100k">$100k+</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span class="body-md">Timeline</span>
+                            <select name="timeline" style="width:100%; padding:0.75rem; margin-top:0.5rem; border:1px solid var(--neutral-200); border-radius:8px;">
+                                <option>1–4 weeks</option>
+                                <option>1–3 months</option>
+                                <option>3–6 months</option>
+                                <option>6+ months</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div style="display:flex; gap:1rem; align-items:center; margin-top:0.5rem;">
+                        <button type="submit" class="btn btn-primary">Send Project Brief</button>
+                        <button type="button" class="btn btn-secondary" id="book-call">Book Call</button>
+                        <div id="form-status" style="margin-left:1rem;color:var(--neutral-700);"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="heading-md">Ready to Build the Future?</h2>
+            <p class="subheading" style="color: rgba(255, 255, 255, 0.9);">
+                Join teams that are accelerating growth with production-grade execution.
+            </p>
+            <a class="btn" href="#contact" style="background-color: white; color: var(--primary-600);">Schedule Consultation
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="brand">REXXIE</p>
+            <p style="font-size: 0.875rem; margin-top: 0.5rem;">© 2026 REXXIE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Book Call CTA -->
+    <a href="#contact" class="floating-cta" aria-label="Book a call">Book Call</a>
+
+    <script>
+        // Floating CTA styles (injected for simplicity)
+        (function(){
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .floating-cta{position:fixed;right:20px;bottom:20px;z-index:1200;background:var(--primary-600);color:white;padding:0.75rem 1rem;border-radius:999px;font-weight:600;box-shadow:0 6px 20px rgba(2,132,199,0.2);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem}
+                @media(max-width:480px){.floating-cta{right:12px;bottom:12px;padding:0.6rem 0.9rem;font-size:0.95rem}}
+            `;
+            document.head.appendChild(style);
+        })();
+
+        // Form handling: POST to Formspree or fallback to mailto
+        document.getElementById('project-form').addEventListener('submit', async function(e){
+            e.preventDefault();
+            const form = e.target;
+            const status = document.getElementById('form-status');
+            status.textContent = 'Sending…';
+
+            const data = new FormData(form);
+            const endpoint = form.action; // replace with your endpoint
+
+            try{
+                // Try fetch POST (works with Formspree endpoint)
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (res.ok) {
+                    status.style.color = 'green';
+                    status.textContent = 'Thanks — we received your brief. We’ll reply within one business day.';
+                    form.reset();
+                } else {
+                    throw new Error('Network error');
+                }
+            } catch(err) {
+                // Fallback: open mail client with summary
+                status.style.color = 'crimson';
+                status.textContent = 'Submission failed — opening email client as fallback.';
+                const values = Object.fromEntries(data.entries());
+                const subject = encodeURIComponent('Project brief: ' + (values.company || values.name || 'New lead'));
+                const body = encodeURIComponent('Name: ' + values.name + '\nCompany: ' + values.company + '\nEmail: ' + values.email + '\nBudget: ' + values.budget + '\nTimeline: ' + values.timeline + '\n\n' + values.project);
+                window.location.href = `mailto:hello@rexxie.dev?subject=${subject}&body=${body}`;
+            }
+        });
+
+        // Book call button opens contact anchor
+        document.getElementById('book-call').addEventListener('click', function(){
+            document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+        });
+    </script>
+</body>
+</html>
